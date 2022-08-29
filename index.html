@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.i18n.properties.js"></script>
+    <title>jquery.i18n.properties</title>
+</head>
+<body>
+<h4 data-i18n="TITLE"></h4>
+<button type="button" class="btn btn-primary">中英</button>
+<script type="text/javascript">
+  $(function () {
+    function loadLanguage (lang = 'zh') {
+      $.i18n.properties({
+        name: 'i18n',//资源文件名称
+        language: lang,//语言代码
+        path: '/i18n/',//文件的目录路径
+        mode: 'both',//用Map的方式使用资源文件中的值 “vars”（默认）、“map”或“both”
+        debug: false,//打开控制台调试语句
+        cache: false,//捆绑包是否应该由浏览器缓存
+        encoding: 'UTF-8',//请求捆绑包的编码
+        namespace: 'INDEX',
+        callback: function () {//加载成功后设置显示内容
+          $('[data-i18n]').each(function () {
+            const keys = $(this).attr('data-i18n')
+            $(this).text($.i18n.prop(keys))
+            console.log($.i18n.prop(keys))
+          })
+        }
+      })
+    }
+
+    loadLanguage()
+    let lang = 'zh'
+    $(document).on('click', '.btn', function () {
+      lang = lang === 'zh' ? 'en' : 'zh'
+      loadLanguage(lang)
+    })
+  })
+</script>
+</body>
+</html>
