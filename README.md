@@ -43,6 +43,6 @@ $('#content).html($.i18n.prop('msg_hello'));
 ```
 
 ### $.i18n.normaliseLanguageCode(settings)
-1.    当settings没有language属性或language属性值不符合规范时，获取浏览器的语言编码，格式化并返回语言编码。
-2.当settings中language满足要求时，格式化并返回语言编码。
+- 当settings没有language属性或language属性值不符合规范时，获取浏览器的语言编码，格式化并返回语言编码。
+- 当settings中language满足要求时，格式化并返回语言编码。
 
