@@ -3,67 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="#" type="image/x-icon">
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/jquery.i18n.properties.js"></script>
-    <title>jquery.i18n.properties</title>
+    <link href="bootstrap.css" rel="stylesheet" type="text/css" />
+    <title>jquery.i18n.properties 中英文切换</title>
 </head>
 <body>
-<h4 data-i18n="HOME.TITLE"></h4>
-<h4 data-i18n="ABOUT.TITLE"></h4>
-<button type="button" class="btn btn-primary btn1">中英</button>
-<button type="button" class="btn btn-primary btn2">中英</button>
-<script type="text/javascript">
-  $(function () {
-    function loadLanguage (lang = 'zh') {
-      $.i18n.properties({
-        name: 'i18n',//资源文件名称
-        language: lang,//语言代码
-        path: 'i18n/',//文件的目录路径
-        mode: 'map',//用Map的方式使用资源文件中的值 “vars”（默认）、“map”或“both”
-        debug: true,//打开控制台调试语句
-        cache: false,//捆绑包是否应该由浏览器缓存
-        encoding: 'UTF-8',//请求捆绑包的编码
-        namespace: 'HOME',
-        callback: function () {//加载成功后设置显示内容
-          $('[data-i18n]').each(function () {
-            const keys = $(this).attr('data-i18n')
-            $(this).text($.i18n.prop(keys))
-          })
-        }
-      })
-    }
-    function loadLanguageTow (lang = 'zh') {
-      $.i18n.properties({
-        name: 'i18n',//资源文件名称
-        language: lang,//语言代码
-        path: 'i18n/',//文件的目录路径
-        mode: 'map',//用Map的方式使用资源文件中的值 “vars”（默认）、“map”或“both”
-        debug: true,//打开控制台调试语句
-        cache: false,//捆绑包是否应该由浏览器缓存
-        encoding: 'UTF-8',//请求捆绑包的编码
-        namespace: 'HOME',
-        callback: function () {//加载成功后设置显示内容
-          $('[data-i18n]').each(function () {
-            const keys = $(this).attr('data-i18n')
-            $(this).text($.i18n.prop(keys))
-          })
-        }
-      })
-    }
-
-    let lang = 'zh'
-    loadLanguage(lang)
-    loadLanguageTow(lang)
-    $(document).on('click', '.btn1', function () {
-      lang = lang === 'zh' ? 'en' : 'zh'
-      loadLanguage(lang)
-    })
-
-    $(document).on('click', '.btn1', function () {
-      lang = lang === 'zh' ? 'en' : 'zh'
-      loadLanguageTow(lang)
-    })
-  })
+<div class="text-center"><button type="button" class="btn btn-primary btn1">中英</button></div>
+<div class="container mt-5">
+    <div class="alert alert-primary" role="alert" data-i18n="home.alert">
+        A simple primary alert—check it out!
+    </div>
+    <div class="media">
+        <img src="http://iph.href.lu/64x64?bg=ebebeb&fg=999&text" alt="" class="mr-3" />
+        <div class="media-body">
+            <h5 class="mt-0" data-i18n="HOME.TITLE">Media heading</h5>
+            <p data-i18n="HOME.CONTENT">Will you do the same for me? It's time to face the music I'm no longer your muse. Heard it's beautiful, be the judge and my girls gonna take a vote. I can feel a phoenix inside of me. Heaven is jealous of our love, angels are crying from up above. Yeah, you take me to utopia.</p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.i18n.properties.js"></script>
+<script type="text/javascript" src="js/set.lang.js">
 </script>
 </body>
 </html>
